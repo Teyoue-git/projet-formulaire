@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'inscription - Championnats du Monde</title>
+    <link rel="stylesheet" href="formulaire.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="devoir.html">ACCUEIL</a></li>
+                <li><a href="formulaire.html">FORMULAIRE</a></li>
+                <li>
+                    <button type="button" class="text">TAILLE DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changetaille('12px'); return false;">TAILLE PETITE</a></li>
+                            <li><a href="#" onclick="changetaille('16px'); return false;">TAILLE NORMALE</a></li>
+                            <li><a href="#" onclick="changetaille('20px'); return false;">TAILLE GRANDE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="text">COULEUR DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changecouleur('red'); return false;">COULEUR ROUGE</a></li>
+                            <li><a href="#" onclick="changecouleur('blue'); return false;">COULEUR BLEUE</a></li>
+                            <li><a href="#" onclick="changecouleur('black'); return false;">COULEUR NOIRE</a></li>
+                            <li><a href="#" onclick="changecouleur('pink'); return false;">COULEUR ROSE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="text">POLICE DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changestyle('Barlow, sans-serif'); return false;">BARLOW</a></li>
+                            <li><a href="#" onclick="changestyle('Georgia, serif'); return false;">GEORGIA</a></li>
+                            <li><a href="#" onclick="changestyle('Arial, sans-serif'); return false;">ARIAL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page">
+            <h1>FORMULAIRE D'INSCRIPTION</h1>
+            <form id="sportForm" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label>Nom :</label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+                </div>
+                <div class="form-group">
+                    <label>Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                </div>
+                <div class="form-group">
+                    <label>Année de naissance :</label>
+                    <input type="number" id="annee-naissance" name="annee-naissance" placeholder="Annee de naissance" min="1900" max="2026" required>
+                </div>
+                <div class="form-group">
+                    <label>Mois de naissance :</label>
+                    <select id="mois" name="mois" onchange="trierMenuJour(this, 'jour', this.value)">
+                        <option value="">--Sélectionnez un mois--</option>
+                        <option value="Janvier">Janvier</option>
+                        <option value="Février">Février</option>
+                        <option value="Mars">Mars</option>
+                        <option value="Avril">Avril</option>
+                        <option value="Mai">Mai</option>
+                        <option value="Juin">Juin</option>
+                        <option value="Juillet">Juillet</option>
+                        <option value="Août">Août</option>
+                        <option value="Septembre">Septembre</option>
+                        <option value="Octobre">Octobre</option>
+                        <option value="Novembre">Novembre</option>
+                        <option value="Décembre">Décembre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jour :</label>
+                    <select id="jour" name="jour">
+                        <option value="">--Sélectionnez d'abord un mois--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Sport :</label>
+                    <select id="sport" name="sport" onchange="trierMenuCate(this, 'categorie', document.getElementById('annee-naissance').value)">
+                        <option value="">--Sélectionnez un sport--</option>
+                        <option value="football">Football</option>
+                        <option value="natation">Natation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Catégorie :</label>
+                    <select id="categorie" name="categorie" onchange="trierMenuSport()">
+                        <option value="">--Sélectionnez d'abord un sport--</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Épreuve :</label>
+                    <select id="epreuve" name="epreuve">
+                        <option value="">--Sélectionnez d'abord une catégorie--</option> <br> <br>
+                    </select> 
+                </div>
+                
+                    <input type="reset" value=" Reinitialiser"  onclick="resetForm()">
+                    <input type="submit" value=" Valider">
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer-site">
+        <p>© 2026 Championnats du Monde — Tous droits réservés</p>
+        <div class="foot-controls">
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Couleur</span>
+                <button class="color-dot active" style="background:#222222;" onclick="setDot(this,'#222222')" title="Noir"></button>
+                <button class="color-dot" style="background:#e53935;" onclick="setDot(this,'#e53935')" title="Rouge"></button>
+                <button class="color-dot" style="background:#1565c0;" onclick="setDot(this,'#1565c0')" title="Bleu"></button>
+                <button class="color-dot" style="background:#e91e8c;" onclick="setDot(this,'#e91e8c')" title="Rose"></button>
+                <button class="color-dot" style="background:#2e7d32;" onclick="setDot(this,'#2e7d32')" title="Vert"></button>
+            </div>
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Taille</span>
+                <div class="taille-ctrl">
+                    <button type="button" onclick="changerTaille(-1)">−</button>
+                    <span class="taille-val">16 px</span>
+                    <button type="button" onclick="changerTaille(1)">+</button>
+                </div>
+            </div>
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Police</span>
+                <select class="police-select" onchange="changestyle(this.value)">
+                    <option value="'Segoe UI',sans-serif">Segoe UI</option>
+                    <option value="Georgia,serif">Georgia</option>
+                    <option value="Arial,sans-serif">Arial</option>
+                    <option value="'Courier New',monospace">Courier</option>
+                    <option value="Barlow,sans-serif">Barlow</option>
+                </select>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+</html>

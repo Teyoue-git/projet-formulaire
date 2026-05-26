@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Championnats du Monde - Accueil</title>
+    <link rel="stylesheet" href="devoir.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="devoir.html">ACCUEIL</a></li>
+                <li><a href="formulaire.html">FORMULAIRE</a></li>
+                <li>
+                    <button type="button" class="text">TAILLE DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changetaille('12px'); return false;">TAILLE PETITE</a></li>
+                            <li><a href="#" onclick="changetaille('16px'); return false;">TAILLE NORMALE</a></li>
+                            <li><a href="#" onclick="changetaille('20px'); return false;">TAILLE GRANDE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="text">COULEUR DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changecouleur('red'); return false;">COULEUR ROUGE</a></li>
+                            <li><a href="#" onclick="changecouleur('blue'); return false;">COULEUR BLEUE</a></li>
+                            <li><a href="#" onclick="changecouleur('black'); return false;">COULEUR NOIRE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="text">POLICE DU TEXTE</button>
+                    <div class="texte">
+                        <ul>
+                            <li><a href="#" onclick="changestyle('Barlow, sans-serif'); return false;">BARLOW</a></li>
+                            <li><a href="#" onclick="changestyle('Georgia, serif'); return false;">GEORGIA</a></li>
+                            <li><a href="#" onclick="changestyle('Arial, sans-serif'); return false;">ARIAL</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="search-box">
+                <h3> Rechercher un mot dans le site</h3>
+                <input type="text" id="searchWord" placeholder="Entrez un mot à rechercher...">
+                <button onclick="getxy()">Rechercher</button>
+            <div id="searchResult" class="search-result"></div>
+            </div>
+            <img src="images/football-stadium.jpg" alt="banner du site" width="100%" title="banner du site" class="banner">
+            <div id="accueil" class="page_active">
+                <h1>BIENVENUE DANS LE CHAMPIONNAT MONDIAL</h1>
+                <div class="sport">
+                    <div class="foot">
+                        <img src="images/soccer-football.jpg" alt="foot" width="100%">
+                        <h2>Football</h2>
+                        <p>Les meilleures équipes nationales s'affrontent pour le titre mondial.</p>
+                        <h3>Épreuves :</h3>
+                        <ul class="list_fb" id="footballList">
+                            <li>Tournoi U17</li>
+                            <li>Match amical U17</li>
+                            <li>Coupe du Monde U20</li>
+                            <li>Match amical Senior</li>
+                            <li>Coupe continentale</li>
+                            <li>Tournoi Vétéran</li>
+                            <li>Match de gala</li>
+                        </ul>
+                    </div>
+                    <div class="natation">
+                        <img src="images/natation.jpg" alt="natation" width="100%">
+                        <h2>Natation</h2>
+                        <p>Les meilleurs nageurs du monde en compétition.</p>
+                        <h3>Épreuves :</h3>
+                        <ul class="list_Na" id="natationList">
+                            <li>50m nage libre</li>
+                            <li>100m brasse</li>
+                            <li>200m papillon</li>
+                            <li>400m 4 nages</li>
+                        </ul>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" onclick="ajout()">Ajouter Épreuve Football</button>
+                        <button type="button" onclick="ajouts()">Ajouter Épreuve Natation</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-site">
+        <p>© 2026 Championnats du Monde — Tous droits réservés</p>
+        <div class="foot-controls">
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Couleur</span>
+                <button class="color-dot active" style="background:#222222;" onclick="setDot(this,'#222222')" title="Noir"></button>
+                <button class="color-dot" style="background:#e53935;" onclick="setDot(this,'#e53935')" title="Rouge"></button>
+                <button class="color-dot" style="background:#1565c0;" onclick="setDot(this,'#1565c0')" title="Bleu"></button>
+                <button class="color-dot" style="background:#e91e8c;" onclick="setDot(this,'#e91e8c')" title="Rose"></button>
+                <button class="color-dot" style="background:#2e7d32;" onclick="setDot(this,'#2e7d32')" title="Vert"></button>
+            </div>
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Taille</span>
+                <div class="taille-ctrl">
+                    <button type="button" onclick="changerTaille(-1)">−</button>
+                    <span class="taille-val">16 px</span>
+                    <button type="button" onclick="changerTaille(1)">+</button>
+                </div>
+            </div>
+
+            <div class="ctrl-group">
+                <span class="ctrl-label">Police</span>
+                <select class="police-select" onchange="changestyle(this.value)">
+                    <option value="'Segoe UI',sans-serif">Segoe UI</option>
+                    <option value="Georgia,serif">Georgia</option>
+                    <option value="Arial,sans-serif">Arial</option>
+                    <option value="'Courier New',monospace">Courier</option>
+                    <option value="Barlow,sans-serif">Barlow</option>
+                </select>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+</html>
